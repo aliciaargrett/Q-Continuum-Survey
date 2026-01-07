@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Q-Continuum Project Family Lineage Survey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rufina:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #F6F2E9;
+            color: #1F4D3B;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1F4D3B 0%, #2a6b4f 100%);
+            color: #F6F2E9;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-family: 'Rufina', serif;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #C9A227;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #e0ddd3;
+            border-radius: 20px;
+            height: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #C9A227 0%, #B17B2B 100%);
+            border-radius: 20px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(31, 77, 59, 0.08);
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            font-family: 'Rufina', serif;
+            color: #1F4D3B;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #C9A227;
+            padding-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 25px;
+            color: #2a6b4f;
+            line-height: 1.8;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #1F4D3B;
+        }
+
+        .required {
+            color: #B17B2B;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0ddd3;
+            border-radius: 6px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #C9A227;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .help-text {
+            font-size: 0.9em;
+            color: #5a7d6a;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            margin-top: 10px;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .radio-group input,
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 6px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #C9A227 0%, #B17B2B 100%);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e0ddd3;
+            color: #1F4D3B;
+        }
+
+        .btn-secondary:hover {
+            background: #d0cdc3;
+        }
+
+        .intro-section {
+            text-align: center;
+        }
+
+        .intro-section h3 {
+            font-family: 'Rufina', serif;
+            color: #C9A227;
+            margin: 30px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        .intro-section ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+            padding-left: 20px;
+        }
+
+        .intro-section li {
+            margin-bottom: 10px;
+            color: #2a6b4f;
+        }
+
+        .entry-type-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .entry-card {
+            padding: 30px;
+            border: 3px solid #e0ddd3;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .entry-card:hover {
+            border-color: #C9A227;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.2);
+        }
+
+        .entry-card.selected {
+            border-color: #C9A227;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(177, 123, 43, 0.1) 100%);
+        }
+
+        .entry-card h3 {
+            font-family: 'Rufina', serif;
+            color: #1F4D3B;
+            margin-bottom: 10px;
+        }
+
+        .entry-card p {
+            color: #5a7d6a;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 600px) {
+            .entry-type-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>The Q-Continuum Project</h1>
+            <p>Family Lineage Preservation</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <form id="surveyForm">
+            <!-- Honeypot field for spam protection - hidden from humans, bots will fill it -->
+            <input type="text" name="_honeypot" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" tabindex="-1" autocomplete="off">
+            
+            <!-- Section 0: Introduction -->
+            <div class="section active intro-section" data-section="0">
+                <h2>Welcome to The Q-Continuum Project!</h2>
+                
+                <p style="font-size: 1.1em; margin: 30px 0;">Thank you for being part of something extraordinary. Your contribution today helps preserve our family's story for generations to come.</p>
+
+                <h3>Our Mission</h3>
+                <p>The Q-Continuum Project is a living family archive designed to preserve not just names and dates, but the context, relationships, and memories that make our lineage meaningful. This is about preventing knowledge decay and ensuring that what we know today doesn't disappear tomorrow.</p>
+
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>This survey takes time.</strong> Set aside 20-45 minutes depending on how much you know.</li>
+                    <li><strong>Fill out what you know.</strong> It's perfectly okay to leave things blank if you're unsure.</li>
+                    <li><strong>Your answers matter.</strong> Even partial information helps us build connections and preserve our heritage.</li>
+                    <li><strong>This is gentle work.</strong> We understand family histories can be complex, sensitive, and incomplete. We've designed this with care.</li>
+                </ul>
+
+                <h3>Survey Overview</h3>
+                <p>You'll be asked to share information about:</p>
+                <ul>
+                    <li>Yourself (or someone you're adding to our records)</li>
+                    <li>Parents, grandparents, and extended family</li>
+                    <li>Siblings, children, and spouses</li>
+                    <li>Life details: education, career, hobbies, values</li>
+                    <li>Photos or documents you'd like to contribute</li>
+                </ul>
+
+                <p style="margin-top: 30px; font-weight: 500;">Ready? Let's begin.</p>
+
+                <div class="button-group">
+                    <button type="button" class="btn-primary" onclick="goToSection(1)">Continue</button>
+                </div>
+            </div>
+
+            <!-- Section 1: Entry Type Selection -->
+            <div class="section" data-section="1">
+                <h2>Choose Your Entry Type</h2>
+                <p>Are you filling this out for yourself, or adding information about someone else?</p>
+
+                <div class="entry-type-cards">
+                    <div class="entry-card" onclick="selectEntryType('new')">
+                        <h3>New Entry</h3>
+                        <p>I'm filling out information about myself</p>
+                    </div>
+                    <div class="entry-card" onclick="selectEntryType('addition')">
+                        <h3>Addition to Existing Entry</h3>
+                        <p>I'm adding information about someone else</p>
+                    </div>
+                </div>
+
+                <input type="hidden" id="entryType" name="entryType">
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="goToSection(0)">Back</button>
+                    <button type="button" class="btn-primary" onclick="handleEntryTypeNext()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Section 2: About Self -->
+            <div class="section" data-section="2" id="section-about-self">
+                <h2>About You</h2>
+                <p>Let's start with the basics. Required fields help us correctly identify people in public records.</p>
+
+                <div class="form-group">
+                    <label>First Name <span class="required">*</span></label>
+                    <input type="text" name="firstName">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Middle Name</label>
+                    <input type="text" name="middleName">
+                    <div class="help-text">Leave blank if you don't have one</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Last Name <span class="required">*</span></label>
+                    <input type="text" name="lastName">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Maiden Name (if applicable)</label>
+                    <input type="text" name="maidenName">
+                </div>
+
+                <div class="form-group">
+                    <label>Other Names / Nicknames</label>
+                    <input type="text" name="nicknames">
+                    <div class="help-text">Any other names you go by or have been known by</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="gender" value="Male"> Male</label>
+                        <label><input type="radio" name="gender" value="Female"> Female</label>
+                        <label><input type="radio" name="gender" value="Other"> Other/Prefer to self-describe</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="birthday">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthplace <span class="required">*</span></label>
+                    <input type="text" name="birthplace">
+                    <div class="help-text">City, State, Country - Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birth Time</label>
+                    <input type="time" name="birthtime">
+                    <div class="help-text">If you happen to know it</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birth Story</label>
+                    <textarea name="birthStory" placeholder="Any details about your birth you'd like to share: C-section, natural delivery, complications, interesting stories..."></textarea>
+                    <div class="help-text">This is optional but can be meaningful to preserve</div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="goToSection(1)">Back</button>
+                    <button type="button" class="btn-primary" onclick="validateAndContinueFromAboutSelf()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Section 3: Addition Entry -->
+            <div class="section" data-section="3" id="section-addition-entry">
+                <h2>Who Are You Adding?</h2>
+                <p>Please provide information about the person you're adding to our records.</p>
+
+                <div id="additionEntriesContainer">
+                    <div class="addition-entry-form">
+                        <div class="form-group">
+                            <label>Their First Name <span class="required">*</span></label>
+                            <input type="text" name="addFirstName" class="add-first-name">
+                            <div class="help-text">Required for record-keeping</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Their Middle Name</label>
+                            <input type="text" name="addMiddleName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Their Last Name <span class="required">*</span></label>
+                            <input type="text" name="addLastName" class="add-last-name">
+                            <div class="help-text">Required for record-keeping</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Their Maiden Name (if applicable)</label>
+                            <input type="text" name="addMaidenName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Their Birthday <span class="required">*</span></label>
+                            <input type="date" name="addBirthday" class="add-birthday">
+                            <div class="help-text">Required for record-keeping</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Their Birthplace <span class="required">*</span></label>
+                            <input type="text" name="addBirthplace" class="add-birthplace">
+                            <div class="help-text">City, State, Country - Required for record-keeping</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Their Parents</label>
+                            <input type="text" name="addMotherName" placeholder="Mother's name">
+                            <input type="text" name="addFatherName" placeholder="Father's name" style="margin-top: 10px;">
+                            <div class="help-text">If you know them</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Are you related to this person? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="isRelated" value="yes" onchange="toggleRelationship(true)"> Yes</label>
+                                <label><input type="radio" name="isRelated" value="no" onchange="toggleRelationship(false)"> No</label>
+                            </div>
+                            <div class="help-text">Required for record-keeping</div>
+                        </div>
+
+                        <div class="form-group" id="relationshipKnownGroup" style="display: none;">
+                            <label>Do you know how you're related?</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="relationshipKnown" value="yes" onchange="toggleRelationshipDetail(true)"> Yes</label>
+                                <label><input type="radio" name="relationshipKnown" value="no" onchange="toggleRelationshipDetail(false)"> No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="relationshipDetailGroup" style="display: none;">
+                            <label>How are you related?</label>
+                            <input type="text" name="relationshipDetail" placeholder="e.g., 4th cousin, great-aunt, nephew...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 30px; text-align: center;">
+                    <p style="margin-bottom: 15px;">Would you like to add another person?</p>
+                    <button type="button" class="btn-secondary" onclick="alert('Additional entries feature coming soon! For now, please submit this entry and fill out a new survey for each person.')" style="width: auto; padding: 12px 24px;">+ Add Another Person</button>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="goToSection(1)">Back</button>
+                    <button type="button" class="btn-primary" onclick="validateAndContinueFromAddition()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Section 4: Relative Selection -->
+            <div class="section" data-section="4">
+                <h2>Which Relatives Would You Like to Enter Information For?</h2>
+                <p>Select all that apply. You'll be able to provide detailed information for each one you choose.</p>
+                <p class="help-text">Remember: fill out only what you know. It's perfectly fine to provide partial information.</p>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="relatives" value="mother"> Mother</label>
+                        <label><input type="checkbox" name="relatives" value="father"> Father</label>
+                        <label><input type="checkbox" name="relatives" value="siblings"> Siblings</label>
+                        <label><input type="checkbox" name="relatives" value="maternal-grandmother"> Maternal Grandmother (Your Mom's Mom)</label>
+                        <label><input type="checkbox" name="relatives" value="maternal-grandfather"> Maternal Grandfather (Your Mom's Dad)</label>
+                        <label><input type="checkbox" name="relatives" value="paternal-grandmother"> Paternal Grandmother (Your Dad's Mom)</label>
+                        <label><input type="checkbox" name="relatives" value="paternal-grandfather"> Paternal Grandfather (Your Dad's Dad)</label>
+                        <label><input type="checkbox" name="relatives" value="great-grandparents"> Great Grandparents and Beyond</label>
+                        <label><input type="checkbox" name="relatives" value="spouse-partner"> Spouse/Partners/Co-Parents</label>
+                        <label><input type="checkbox" name="relatives" value="children"> Children (if you are a parent)</label>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="goBackFromRelatives()">Back</button>
+                    <button type="button" class="btn-primary" onclick="startRelativeDetails()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Section 5: Mother Details -->
+            <div class="section" data-section="mother">
+                <h2>About Your Mother</h2>
+                <p>Please share what you know about your mother. Fill in what you can—it's okay to leave some fields blank.</p>
+
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="motherFullName">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Maiden Name (if applicable)</label>
+                    <input type="text" name="motherMaidenName">
+                </div>
+
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="motherBirthday">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthplace</label>
+                    <input type="text" name="motherBirthplace">
+                    <div class="help-text">City, State, Country</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Is she deceased?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="motherDeceased" value="yes" onchange="toggleMotherDeath(true)"> Yes</label>
+                        <label><input type="radio" name="motherDeceased" value="no" onchange="toggleMotherDeath(false)"> No</label>
+                    </div>
+                </div>
+
+                <div id="motherDeathDetails" style="display: none;">
+                    <div class="form-group">
+                        <label>Date of Passing</label>
+                        <input type="date" name="motherDeathDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Place of Passing</label>
+                        <input type="text" name="motherDeathPlace">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cause of Passing</label>
+                        <textarea name="motherDeathCause" placeholder="If you're comfortable sharing..."></textarea>
+                        <div class="help-text">This is optional and we understand if you'd prefer not to share</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Marriage Status</label>
+                    <select name="motherMarriageStatus">
+                        <option value="">Select if known</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                        <option value="separated">Separated</option>
+                        <option value="partnered">In a partnership</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Her Siblings</label>
+                    <textarea name="motherSiblings" placeholder="Names of her brothers and sisters, if you know them..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Where She Grew Up</label>
+                    <input type="text" name="motherHometown">
+                </div>
+
+                <div class="form-group">
+                    <label>Occupation(s)</label>
+                    <textarea name="motherOccupation" placeholder="Jobs, careers, or work she's done..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Organizations, Clubs, or Groups</label>
+                    <textarea name="motherOrganizations" placeholder="Churches, sororities, community groups, professional organizations..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Sports or Hobbies</label>
+                    <textarea name="motherHobbies" placeholder="Things she enjoys or enjoyed doing..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Notable Traits or Memories</label>
+                    <textarea name="motherTraits" placeholder="What makes her special? Personality, achievements, things you remember..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Spouses or Co-Parents</label>
+                    <textarea name="motherAdditionalPartners" placeholder="If she had other significant relationships or co-parents of her children..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Her Children <span class="required">*</span></label>
+                    <textarea name="motherChildren" placeholder="Names of all her children (including you)..."></textarea>
+                    <div class="help-text">Required for tracking lineage - please list all children</div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="previousRelativeDetail()">Back</button>
+                    <button type="button" class="btn-primary" onclick="nextRelativeDetail()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Section 6: Father Details -->
+            <div class="section" data-section="father">
+                <h2>About Your Father</h2>
+                <p>Please share what you know about your father. Fill in what you can—it's okay to leave some fields blank.</p>
+
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="fatherFullName">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="fatherBirthday">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthplace</label>
+                    <input type="text" name="fatherBirthplace">
+                    <div class="help-text">City, State, Country</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Is he deceased?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="fatherDeceased" value="yes" onchange="toggleFatherDeath(true)"> Yes</label>
+                        <label><input type="radio" name="fatherDeceased" value="no" onchange="toggleFatherDeath(false)"> No</label>
+                    </div>
+                </div>
+
+                <div id="fatherDeathDetails" style="display: none;">
+                    <div class="form-group">
+                        <label>Date of Passing</label>
+                        <input type="date" name="fatherDeathDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Place of Passing</label>
+                        <input type="text" name="fatherDeathPlace">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cause of Passing</label>
+                        <textarea name="fatherDeathCause" placeholder="If you're comfortable sharing..."></textarea>
+                        <div class="help-text">This is optional and we understand if you'd prefer not to share</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Marriage Status</label>
+                    <select name="fatherMarriageStatus">
+                        <option value="">Select if known</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                        <option value="separated">Separated</option>
+                        <option value="partnered">In a partnership</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>His Siblings</label>
+                    <textarea name="fatherSiblings" placeholder="Names of his brothers and sisters, if you know them..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Where He Grew Up</label>
+                    <input type="text" name="fatherHometown">
+                </div>
+
+                <div class="form-group">
+                    <label>Occupation(s)</label>
+                    <textarea name="fatherOccupation" placeholder="Jobs, careers, or work he's done..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Organizations, Clubs, or Groups</label>
+                    <textarea name="fatherOrganizations" placeholder="Churches, fraternities, community groups, professional organizations..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Sports or Hobbies</label>
+                    <textarea name="fatherHobbies" placeholder="Things he enjoys or enjoyed doing..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Notable Traits or Memories</label>
+                    <textarea name="fatherTraits" placeholder="What makes him special? Personality, achievements, things you remember..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Spouses or Co-Parents</label>
+                    <textarea name="fatherAdditionalPartners" placeholder="If he had other significant relationships or co-parents of his children..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>His Children <span class="required">*</span></label>
+                    <textarea name="fatherChildren" placeholder="Names of all his children (including you)..."></textarea>
+                    <div class="help-text">Required for tracking lineage - please list all children</div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="previousRelativeDetail()">Back</button>
+                    <button type="button" class="btn-primary" onclick="nextRelativeDetail()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Maternal Grandmother -->
+            <div class="section" data-section="maternal-grandmother">
+                <h2>About Your Maternal Grandmother</h2>
+                <p>Your mom's mom. Share what you know—it's okay to leave some fields blank.</p>
+
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="maternalGrandmotherFullName">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Maiden Name (if applicable)</label>
+                    <input type="text" name="maternalGrandmotherMaidenName">
+                </div>
+
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="maternalGrandmotherBirthday">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthplace</label>
+                    <input type="text" name="maternalGrandmotherBirthplace">
+                </div>
+
+                <div class="form-group">
+                    <label>Is she deceased?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="maternalGrandmotherDeceased" value="yes" onchange="toggleMaternalGrandmotherDeath(true)"> Yes</label>
+                        <label><input type="radio" name="maternalGrandmotherDeceased" value="no" onchange="toggleMaternalGrandmotherDeath(false)"> No</label>
+                    </div>
+                </div>
+
+                <div id="maternalGrandmotherDeathDetails" style="display: none;">
+                    <div class="form-group">
+                        <label>Date of Passing</label>
+                        <input type="date" name="maternalGrandmotherDeathDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Place of Passing</label>
+                        <input type="text" name="maternalGrandmotherDeathPlace">
+                    </div>
+                    <div class="form-group">
+                        <label>Cause of Passing</label>
+                        <textarea name="maternalGrandmotherDeathCause"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Marriage Status</label>
+                    <select name="maternalGrandmotherMarriageStatus">
+                        <option value="">Select if known</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                        <option value="separated">Separated</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Her Siblings</label>
+                    <textarea name="maternalGrandmotherSiblings"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Where She Grew Up</label>
+                    <input type="text" name="maternalGrandmotherHometown">
+                </div>
+
+                <div class="form-group">
+                    <label>Occupation(s)</label>
+                    <textarea name="maternalGrandmotherOccupation"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Organizations, Clubs, or Groups</label>
+                    <textarea name="maternalGrandmotherOrganizations"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Sports or Hobbies</label>
+                    <textarea name="maternalGrandmotherHobbies"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Notable Traits or Memories</label>
+                    <textarea name="maternalGrandmotherTraits"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Spouses/Partners</label>
+                    <textarea name="maternalGrandmotherPartners" placeholder="Names of all her spouses, partners, or co-parents of her children..."></textarea>
+                    <div class="help-text">This helps us understand relationships and lineage</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Her Children <span class="required">*</span></label>
+                    <textarea name="maternalGrandmotherChildren" placeholder="Names of all her children (including your mother/parent)..."></textarea>
+                    <div class="help-text">Required for tracking lineage - please list all children</div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="previousRelativeDetail()">Back</button>
+                    <button type="button" class="btn-primary" onclick="nextRelativeDetail()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Maternal Grandfather -->
+            <div class="section" data-section="maternal-grandfather">
+                <h2>About Your Maternal Grandfather</h2>
+                <p>Your mom's dad. Share what you know—it's okay to leave some fields blank.</p>
+
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="maternalGrandfatherFullName">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="maternalGrandfatherBirthday">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthplace</label>
+                    <input type="text" name="maternalGrandfatherBirthplace">
+                </div>
+
+                <div class="form-group">
+                    <label>Is he deceased?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="maternalGrandfatherDeceased" value="yes" onchange="toggleMaternalGrandfatherDeath(true)"> Yes</label>
+                        <label><input type="radio" name="maternalGrandfatherDeceased" value="no" onchange="toggleMaternalGrandfatherDeath(false)"> No</label>
+                    </div>
+                </div>
+
+                <div id="maternalGrandfatherDeathDetails" style="display: none;">
+                    <div class="form-group">
+                        <label>Date of Passing</label>
+                        <input type="date" name="maternalGrandfatherDeathDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Place of Passing</label>
+                        <input type="text" name="maternalGrandfatherDeathPlace">
+                    </div>
+                    <div class="form-group">
+                        <label>Cause of Passing</label>
+                        <textarea name="maternalGrandfatherDeathCause"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Marriage Status</label>
+                    <select name="maternalGrandfatherMarriageStatus">
+                        <option value="">Select if known</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>His Siblings</label>
+                    <textarea name="maternalGrandfatherSiblings"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Where He Grew Up</label>
+                    <input type="text" name="maternalGrandfatherHometown">
+                </div>
+
+                <div class="form-group">
+                    <label>Occupation(s)</label>
+                    <textarea name="maternalGrandfatherOccupation"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Organizations, Clubs, or Groups</label>
+                    <textarea name="maternalGrandfatherOrganizations"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Sports or Hobbies</label>
+                    <textarea name="maternalGrandfatherHobbies"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Notable Traits or Memories</label>
+                    <textarea name="maternalGrandfatherTraits"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Spouses/Partners</label>
+                    <textarea name="maternalGrandfatherPartners" placeholder="Names of all his spouses, partners, or co-parents of his children..."></textarea>
+                    <div class="help-text">This helps us understand relationships and lineage</div>
+                </div>
+
+                <div class="form-group">
+                    <label>His Children <span class="required">*</span></label>
+                    <textarea name="maternalGrandfatherChildren" placeholder="Names of all his children (including your mother/parent)..."></textarea>
+                    <div class="help-text">Required for tracking lineage - please list all children</div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="previousRelativeDetail()">Back</button>
+                    <button type="button" class="btn-primary" onclick="nextRelativeDetail()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Paternal Grandmother -->
+            <div class="section" data-section="paternal-grandmother">
+                <h2>About Your Paternal Grandmother</h2>
+                <p>Your dad's mom. Share what you know—it's okay to leave some fields blank.</p>
+
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="paternalGrandmotherFullName">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Maiden Name (if applicable)</label>
+                    <input type="text" name="paternalGrandmotherMaidenName">
+                </div>
+
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="paternalGrandmotherBirthday">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthplace</label>
+                    <input type="text" name="paternalGrandmotherBirthplace">
+                </div>
+
+                <div class="form-group">
+                    <label>Is she deceased?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="paternalGrandmotherDeceased" value="yes" onchange="togglePaternalGrandmotherDeath(true)"> Yes</label>
+                        <label><input type="radio" name="paternalGrandmotherDeceased" value="no" onchange="togglePaternalGrandmotherDeath(false)"> No</label>
+                    </div>
+                </div>
+
+                <div id="paternalGrandmotherDeathDetails" style="display: none;">
+                    <div class="form-group">
+                        <label>Date of Passing</label>
+                        <input type="date" name="paternalGrandmotherDeathDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Place of Passing</label>
+                        <input type="text" name="paternalGrandmotherDeathPlace">
+                    </div>
+                    <div class="form-group">
+                        <label>Cause of Passing</label>
+                        <textarea name="paternalGrandmotherDeathCause"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Marriage Status</label>
+                    <select name="paternalGrandmotherMarriageStatus">
+                        <option value="">Select if known</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Her Siblings</label>
+                    <textarea name="paternalGrandmotherSiblings"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Where She Grew Up</label>
+                    <input type="text" name="paternalGrandmotherHometown">
+                </div>
+
+                <div class="form-group">
+                    <label>Occupation(s)</label>
+                    <textarea name="paternalGrandmotherOccupation"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Organizations, Clubs, or Groups</label>
+                    <textarea name="paternalGrandmotherOrganizations"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Sports or Hobbies</label>
+                    <textarea name="paternalGrandmotherHobbies"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Notable Traits or Memories</label>
+                    <textarea name="paternalGrandmotherTraits"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Spouses/Partners</label>
+                    <textarea name="paternalGrandmotherPartners" placeholder="Names of all her spouses, partners, or co-parents of her children..."></textarea>
+                    <div class="help-text">This helps us understand relationships and lineage</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Her Children <span class="required">*</span></label>
+                    <textarea name="paternalGrandmotherChildren" placeholder="Names of all her children (including your father/parent)..."></textarea>
+                    <div class="help-text">Required for tracking lineage - please list all children</div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="previousRelativeDetail()">Back</button>
+                    <button type="button" class="btn-primary" onclick="nextRelativeDetail()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Paternal Grandfather -->
+            <div class="section" data-section="paternal-grandfather">
+                <h2>About Your Paternal Grandfather</h2>
+                <p>Your dad's dad. Share what you know—it's okay to leave some fields blank.</p>
+
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="paternalGrandfatherFullName">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="paternalGrandfatherBirthday">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthplace</label>
+                    <input type="text" name="paternalGrandfatherBirthplace">
+                </div>
+
+                <div class="form-group">
+                    <label>Is he deceased?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="paternalGrandfatherDeceased" value="yes" onchange="togglePaternalGrandfatherDeath(true)"> Yes</label>
+                        <label><input type="radio" name="paternalGrandfatherDeceased" value="no" onchange="togglePaternalGrandfatherDeath(false)"> No</label>
+                    </div>
+                </div>
+
+                <div id="paternalGrandfatherDeathDetails" style="display: none;">
+                    <div class="form-group">
+                        <label>Date of Passing</label>
+                        <input type="date" name="paternalGrandfatherDeathDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Place of Passing</label>
+                        <input type="text" name="paternalGrandfatherDeathPlace">
+                    </div>
+                    <div class="form-group">
+                        <label>Cause of Passing</label>
+                        <textarea name="paternalGrandfatherDeathCause"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Marriage Status</label>
+                    <select name="paternalGrandfatherMarriageStatus">
+                        <option value="">Select if known</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>His Siblings</label>
+                    <textarea name="paternalGrandfatherSiblings"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Where He Grew Up</label>
+                    <input type="text" name="paternalGrandfatherHometown">
+                </div>
+
+                <div class="form-group">
+                    <label>Occupation(s)</label>
+                    <textarea name="paternalGrandfatherOccupation"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Organizations, Clubs, or Groups</label>
+                    <textarea name="paternalGrandfatherOrganizations"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Sports or Hobbies</label>
+                    <textarea name="paternalGrandfatherHobbies"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Notable Traits or Memories</label>
+                    <textarea name="paternalGrandfatherTraits"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Spouses/Partners</label>
+                    <textarea name="paternalGrandfatherPartners" placeholder="Names of all his spouses, partners, or co-parents of his children..."></textarea>
+                    <div class="help-text">This helps us understand relationships and lineage</div>
+                </div>
+
+                <div class="form-group">
+                    <label>His Children <span class="required">*</span></label>
+                    <textarea name="paternalGrandfatherChildren" placeholder="Names of all his children (including your father/parent)..."></textarea>
+                    <div class="help-text">Required for tracking lineage - please list all children</div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="previousRelativeDetail()">Back</button>
+                    <button type="button" class="btn-primary" onclick="nextRelativeDetail()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Siblings Section -->
+            <div class="section" data-section="siblings">
+                <h2>About Your Siblings</h2>
+                <p>Please tell us about your brothers and sisters. You can add as many as needed.</p>
+
+                <div id="siblingsContainer">
+                    <!-- Sibling entries will be added here -->
+                </div>
+
+                <button type="button" class="btn-secondary" onclick="addSibling()" style="margin-top: 20px; width: 100%;">+ Add a Sibling</button>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="previousRelativeDetail()">Back</button>
+                    <button type="button" class="btn-primary" onclick="nextRelativeDetail()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Great Grandparents Section -->
+            <div class="section" data-section="great-grandparents">
+                <h2>Great Grandparents and Beyond</h2>
+                <p>Please tell us about your great-grandparents or earlier ancestors. You can add as many as you know.</p>
+
+                <div id="greatGrandparentsContainer">
+                    <!-- Great grandparent entries will be added here -->
+                </div>
+
+                <button type="button" class="btn-secondary" onclick="addGreatGrandparent()" style="margin-top: 20px; width: 100%;">+ Add a Great Grandparent</button>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="previousRelativeDetail()">Back</button>
+                    <button type="button" class="btn-primary" onclick="nextRelativeDetail()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Spouse/Partner Section -->
+            <div class="section" data-section="spouse-partner">
+                <h2>Spouse/Partners/Co-Parents</h2>
+                <p>Please tell us about your significant relationships and co-parents. You can add as many as needed.</p>
+
+                <div id="partnersContainer">
+                    <!-- Partner entries will be added here -->
+                </div>
+
+                <button type="button" class="btn-secondary" onclick="addPartner()" style="margin-top: 20px; width: 100%;">+ Add a Spouse/Partner</button>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="previousRelativeDetail()">Back</button>
+                    <button type="button" class="btn-primary" onclick="nextRelativeDetail()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Children Section -->
+            <div class="section" data-section="children">
+                <h2>About Your Children</h2>
+                <p>Please tell us about your children. You can add as many as needed.</p>
+
+                <div id="childrenContainer">
+                    <!-- Children entries will be added here -->
+                </div>
+
+                <button type="button" class="btn-secondary" onclick="addChild()" style="margin-top: 20px; width: 100%;">+ Add a Child</button>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="previousRelativeDetail()">Back</button>
+                    <button type="button" class="btn-primary" onclick="nextRelativeDetail()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Mind, Body, Spirit Section -->
+            <div class="section" data-section="5">
+                <h2>Mind, Body, and Spirit</h2>
+                <p>This section helps us understand your journey, accomplishments, and values. Share what feels meaningful to you.</p>
+
+                <h3 style="font-family: 'Rufina', serif; color: #C9A227; margin: 30px 0 15px 0; font-size: 1.3em;">Mind</h3>
+
+                <div class="form-group">
+                    <label>Education</label>
+                    <textarea name="education" placeholder="Schools, colleges, universities, degrees, certifications, training programs..."></textarea>
+                    <div class="help-text">Include any educational experiences you want to mention</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Career & Occupations</label>
+                    <textarea name="career" placeholder="Jobs, careers, businesses, volunteer work..."></textarea>
+                    <div class="help-text">Tell us about your professional journey</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Organizations & Affiliations</label>
+                    <textarea name="organizations" placeholder="Churches, sororities, fraternities, professional organizations, community groups, clubs..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Accomplishments</label>
+                    <textarea name="accomplishments" placeholder="What are you proud of? Awards, milestones, achievements..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>What is your proudest accomplishment?</label>
+                    <textarea name="proudestAccomplishment" placeholder="The one thing you're most proud of..."></textarea>
+                </div>
+
+                <h3 style="font-family: 'Rufina', serif; color: #C9A227; margin: 30px 0 15px 0; font-size: 1.3em;">Body</h3>
+
+                <div class="form-group">
+                    <label>Places You've Lived</label>
+                    <textarea name="placesLived" placeholder="Cities, states, countries where you've lived..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Places You've Traveled</label>
+                    <textarea name="placesTraveled" placeholder="Memorable trips, countries visited, travel experiences..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Physical Hobbies & Activities</label>
+                    <textarea name="physicalHobbies" placeholder="Sports, exercise, outdoor activities, physical hobbies..."></textarea>
+                </div>
+
+                <h3 style="font-family: 'Rufina', serif; color: #C9A227; margin: 30px 0 15px 0; font-size: 1.3em;">Spirit</h3>
+
+                <div class="form-group">
+                    <label>Faith or Religion</label>
+                    <select name="faith">
+                        <option value="">Select if applicable</option>
+                        <option value="christianity">Christianity</option>
+                        <option value="islam">Islam</option>
+                        <option value="judaism">Judaism</option>
+                        <option value="hinduism">Hinduism</option>
+                        <option value="buddhism">Buddhism</option>
+                        <option value="sikhism">Sikhism</option>
+                        <option value="spiritual">Spiritual but not religious</option>
+                        <option value="agnostic">Agnostic</option>
+                        <option value="atheist">Atheist</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not">Prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Values</label>
+                    <textarea name="values" placeholder="What matters most to you? What principles guide your life?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Identity</label>
+                    <textarea name="identity" placeholder="How do you see yourself? What aspects of your identity are important to you?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Legacy</label>
+                    <textarea name="legacy" placeholder="What do you hope to be remembered for? What do you want to leave behind?"></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="goBackFromMindBodySpirit()">Back</button>
+                    <button type="button" class="btn-primary" onclick="goToSection(6)">Continue</button>
+                </div>
+            </div>
+
+            <!-- Final Thoughts Section -->
+            <div class="section" data-section="6">
+                <h2>Final Thoughts</h2>
+                <p>We're almost done! This is your space to share anything else that feels important.</p>
+
+                <div class="form-group">
+                    <label>Anything Else You Want to Share?</label>
+                    <textarea name="finalThoughts" placeholder="Stories, memories, advice, reflections, or anything else you'd like to preserve..." style="min-height: 150px;"></textarea>
+                    <div class="help-text">This is your opportunity to share anything we haven't asked about</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Photos or Documents</label>
+                    <p style="margin-bottom: 10px;">Do you have photos, documents, or files you'd like to contribute to our family archive?</p>
+                    <div class="help-text" style="background: #f9f8f5; padding: 15px; border-radius: 6px; margin-top: 10px;">
+                        <strong>How to submit files:</strong><br>
+                        Please upload your photos or documents using this form:<br>
+                        <a href="https://form.jotform.com/252136677830057" target="_blank" style="color: #C9A227; font-weight: 500; text-decoration: underline;">https://form.jotform.com/252136677830057</a><br><br>
+                        Please include your name in the upload form so we can match your files to this submission.
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Rufina', serif; color: #C9A227; margin: 30px 0 15px 0; font-size: 1.3em;">Contact Information</h3>
+                <p>Please provide your contact information so we can follow up with you about The Q-Continuum Project.</p>
+
+                <div class="form-group">
+                    <label>Email Address <span class="required">*</span></label>
+                    <input type="email" name="contactEmail" placeholder="your.email@example.com">
+                    <div class="help-text">Required - This is how we'll stay in touch about the project</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" name="contactPhone" placeholder="(555) 123-4567">
+                    <div class="help-text">Optional - In case we need to reach you by phone</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Mailing Address</label>
+                    <textarea name="contactAddress" placeholder="Street address, city, state, zip code..." style="min-height: 80px;"></textarea>
+                    <div class="help-text">Optional - For sending physical documents or updates</div>
+                </div>
+
+                <div style="background: #f9f8f5; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: center;">
+                    <p style="font-size: 1.1em; margin-bottom: 15px;">Thank you for contributing to The Q-Continuum Project!</p>
+                    <p style="margin-bottom: 20px;">Your time and knowledge help preserve our family's story for generations to come.</p>
+                    
+                    <div style="border-top: 2px solid #C9A227; padding-top: 20px; margin-top: 20px;">
+                        <p style="font-weight: 500; margin-bottom: 10px;">Stay Connected & Follow Our Progress:</p>
+                        <p style="margin-bottom: 5px;">📸 Instagram: <a href="https://instagram.com/quandersunited" target="_blank" style="color: #C9A227; font-weight: 500;">@quandersunited</a></p>
+                        <p style="margin-bottom: 5px;">📘 Facebook: <a href="https://facebook.com/quandersunited" target="_blank" style="color: #C9A227; font-weight: 500;">@quandersunited</a></p>
+                        <p style="margin-top: 15px; font-size: 0.95em; color: #5a7d6a;">We'll share updates, discoveries, and milestones as we build our family archive together.</p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="goBackFromFinalThoughts()">Back</button>
+                    <button type="button" class="btn-primary" onclick="submitSurvey()">Submit Survey</button>
+                </div>
+            </div>
+
+            <!-- Success Section -->
+            <div class="section" id="successSection" style="text-align: center;">
+                <div style="margin-bottom: 30px;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #C9A227 0%, #B17B2B 100%); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h2 style="font-family: 'Rufina', serif; color: #1F4D3B; margin-bottom: 15px;">Thank You!</h2>
+                </div>
+                
+                <p style="font-size: 1.1em; margin-bottom: 20px;">Your response has been successfully submitted to The Q-Continuum Project.</p>
+                
+                <p style="margin-bottom: 30px; color: #5a7d6a;">Your contribution helps preserve our family's story for generations to come.</p>
+                
+                <div style="background: #f9f8f5; padding: 25px; border-radius: 8px; margin-bottom: 30px;">
+                    <p style="font-weight: 500; margin-bottom: 15px;">What happens next?</p>
+                    <p style="color: #5a7d6a; margin-bottom: 10px;">• Your response will be reviewed and added to our family archive</p>
+                    <p style="color: #5a7d6a; margin-bottom: 10px;">• We may reach out if we have follow-up questions</p>
+                    <p style="color: #5a7d6a;">• Follow our progress on social media for updates</p>
+                </div>
+                
+                <div style="border-top: 2px solid #C9A227; padding-top: 25px;">
+                    <p style="font-weight: 500; margin-bottom: 10px;">Stay Connected:</p>
+                    <p style="margin-bottom: 5px;">📸 Instagram: <a href="https://instagram.com/quandersunited" target="_blank" style="color: #C9A227; font-weight: 500;">@quandersunited</a></p>
+                    <p style="margin-bottom: 20px;">📘 Facebook: <a href="https://facebook.com/quandersunited" target="_blank" style="color: #C9A227; font-weight: 500;">@quandersunited</a></p>
+                    
+                    <p style="font-size: 0.95em; color: #5a7d6a;">Know another family member who should fill this out?<br>Share this page with them!</p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let currentSectionNum = 0;
+        let entryType = '';
+        let totalSections = 7;
+        let selectedRelatives = [];
+        let currentRelativeIndex = 0;
+        let siblingCount = 0;
+        let greatGrandparentCount = 0;
+        let partnerCount = 0;
+        let childCount = 0;
+
+        function updateProgress() {
+            const progress = ((currentSectionNum + 1) / totalSections) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function goToSection(sectionNum) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target section
+            const targetSection = document.querySelector(`[data-section="${sectionNum}"]`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                currentSectionNum = sectionNum;
+                updateProgress();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function selectEntryType(type) {
+            document.querySelectorAll('.entry-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            document.getElementById('entryType').value = type;
+            entryType = type;
+        }
+
+        function handleEntryTypeNext() {
+            const selectedType = document.getElementById('entryType').value;
+            if (!selectedType) {
+                alert('Please select an entry type to continue.');
+                return;
+            }
+
+            if (selectedType === 'new') {
+                goToSection(2); // About Self
+            } else {
+                goToSection(3); // Addition Entry
+            }
+        }
+
+        function validateAndContinueFromAboutSelf() {
+            const firstName = document.querySelector('input[name="firstName"]').value;
+            const lastName = document.querySelector('input[name="lastName"]').value;
+            const birthday = document.querySelector('input[name="birthday"]').value;
+            const birthplace = document.querySelector('input[name="birthplace"]').value;
+            
+            if (!firstName || !lastName || !birthday || !birthplace) {
+                alert('Please fill in all required fields (marked with *): First Name, Last Name, Birthday, and Birthplace.');
+                return;
+            }
+            
+            goToSection(4); // Relative Selection
+        }
+
+        function validateAndContinueFromAddition() {
+            const firstName = document.querySelector('input[name="addFirstName"]').value;
+            const lastName = document.querySelector('input[name="addLastName"]').value;
+            const birthday = document.querySelector('input[name="addBirthday"]').value;
+            const birthplace = document.querySelector('input[name="addBirthplace"]').value;
+            const isRelated = document.querySelector('input[name="isRelated"]:checked');
+            
+            if (!firstName || !lastName || !birthday || !birthplace) {
+                alert('Please fill in all required fields (marked with *): First Name, Last Name, Birthday, and Birthplace.');
+                return;
+            }
+            
+            if (!isRelated) {
+                alert('Please indicate whether you are related to this person (required field marked with *).');
+                return;
+            }
+            
+            // For Addition Entry, skip Mind/Body/Spirit and go directly to Final Thoughts
+            goToSection(6);
+        }
+
+        function goBackFromRelatives() {
+            if (entryType === 'new') {
+                goToSection(2); // Back to About Self
+            } else {
+                goToSection(3); // Back to Addition Entry
+            }
+        }
+
+        function toggleRelationship(show) {
+            const group = document.getElementById('relationshipKnownGroup');
+            if (show) {
+                group.style.display = 'block';
+            } else {
+                group.style.display = 'none';
+                document.getElementById('relationshipDetailGroup').style.display = 'none';
+            }
+        }
+
+        function toggleRelationshipDetail(show) {
+            const group = document.getElementById('relationshipDetailGroup');
+            group.style.display = show ? 'block' : 'none';
+        }
+
+        function toggleMotherDeath(show) {
+            document.getElementById('motherDeathDetails').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleFatherDeath(show) {
+            document.getElementById('fatherDeathDetails').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleMaternalGrandmotherDeath(show) {
+            document.getElementById('maternalGrandmotherDeathDetails').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleMaternalGrandfatherDeath(show) {
+            document.getElementById('maternalGrandfatherDeathDetails').style.display = show ? 'block' : 'none';
+        }
+
+        function togglePaternalGrandmotherDeath(show) {
+            document.getElementById('paternalGrandmotherDeathDetails').style.display = show ? 'block' : 'none';
+        }
+
+        function togglePaternalGrandfatherDeath(show) {
+            document.getElementById('paternalGrandfatherDeathDetails').style.display = show ? 'block' : 'none';
+        }
+
+        function addSibling() {
+            siblingCount++;
+            const container = document.getElementById('siblingsContainer');
+            const siblingDiv = document.createElement('div');
+            siblingDiv.className = 'form-group';
+            siblingDiv.style.background = '#f9f8f5';
+            siblingDiv.style.padding = '20px';
+            siblingDiv.style.borderRadius = '8px';
+            siblingDiv.style.marginBottom = '20px';
+            siblingDiv.innerHTML = `
+                <h3 style="font-family: 'Rufina', serif; color: #1F4D3B; margin-bottom: 15px;">Sibling ${siblingCount}</h3>
+                
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="sibling${siblingCount}FullName">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="sibling${siblingCount}Birthday">
+                    <div class="help-text">Required for record-keeping</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Birthplace</label>
+                    <input type="text" name="sibling${siblingCount}Birthplace">
+                </div>
+                
+                <div class="form-group">
+                    <label>Are your parents the same? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="sibling${siblingCount}SameParents" value="yes" onchange="toggleSiblingParents(${siblingCount}, false)"> Yes, same parents</label>
+                        <label><input type="radio" name="sibling${siblingCount}SameParents" value="half" onchange="toggleSiblingParents(${siblingCount}, true)"> Half-sibling</label>
+                        <label><input type="radio" name="sibling${siblingCount}SameParents" value="step" onchange="toggleSiblingParents(${siblingCount}, true)"> Step-sibling</label>
+                        <label><input type="radio" name="sibling${siblingCount}SameParents" value="adopted" onchange="toggleSiblingParents(${siblingCount}, false)"> Adopted sibling</label>
+                    </div>
+                    <div class="help-text">Required for tracking lineage</div>
+                </div>
+                
+                <div id="sibling${siblingCount}ParentsDetails" style="display: none;">
+                    <div class="form-group">
+                        <label>Their Mother's Name <span class="required">*</span></label>
+                        <input type="text" name="sibling${siblingCount}MotherName">
+                    </div>
+                    <div class="form-group">
+                        <label>Their Father's Name <span class="required">*</span></label>
+                        <input type="text" name="sibling${siblingCount}FatherName">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Spouse(s)/Partner(s)</label>
+                    <textarea name="sibling${siblingCount}Partners" placeholder="Names of their spouse(s) or partner(s)..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Children</label>
+                    <textarea name="sibling${siblingCount}Children" placeholder="Names of their children..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Education</label>
+                    <textarea name="sibling${siblingCount}Education" placeholder="Schools, degrees, certifications..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Career/Occupation(s)</label>
+                    <textarea name="sibling${siblingCount}Career" placeholder="Jobs, careers, professions..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Is this sibling deceased?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="sibling${siblingCount}Deceased" value="yes" onchange="toggleSiblingDeath(${siblingCount}, true)"> Yes</label>
+                        <label><input type="radio" name="sibling${siblingCount}Deceased" value="no" onchange="toggleSiblingDeath(${siblingCount}, false)"> No</label>
+                    </div>
+                </div>
+                
+                <div id="sibling${siblingCount}DeathDetails" style="display: none;">
+                    <div class="form-group">
+                        <label>Date of Passing</label>
+                        <input type="date" name="sibling${siblingCount}DeathDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Place of Passing</label>
+                        <input type="text" name="sibling${siblingCount}DeathPlace">
+                    </div>
+                    <div class="form-group">
+                        <label>Cause of Passing</label>
+                        <textarea name="sibling${siblingCount}DeathCause"></textarea>
+                    </div>
+                </div>
+                
+                <button type="button" class="btn-secondary" onclick="removeSibling(this)" style="width: 100%; margin-top: 10px;">Remove This Sibling</button>
+            `;
+            container.appendChild(siblingDiv);
+        }
+
+        function removeSibling(button) {
+            button.parentElement.remove();
+        }
+
+        function toggleSiblingDeath(num, show) {
+            const details = document.getElementById(`sibling${num}DeathDetails`);
+            if (details) {
+                details.style.display = show ? 'block' : 'none';
+            }
+        }
+
+        function toggleSiblingParents(num, show) {
+            const details = document.getElementById(`sibling${num}ParentsDetails`);
+            if (details) {
+                details.style.display = show ? 'block' : 'none';
+            }
+        }
+
+        function addGreatGrandparent() {
+            greatGrandparentCount++;
+            const container = document.getElementById('greatGrandparentsContainer');
+            const div = document.createElement('div');
+            div.className = 'form-group';
+            div.style.background = '#f9f8f5';
+            div.style.padding = '20px';
+            div.style.borderRadius = '8px';
+            div.style.marginBottom = '20px';
+            div.innerHTML = `
+                <h3 style="font-family: 'Rufina', serif; color: #1F4D3B; margin-bottom: 15px;">Great Grandparent/Ancestor ${greatGrandparentCount}</h3>
+                
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="greatGrandparent${greatGrandparentCount}FullName">
+                </div>
+                
+                <div class="form-group">
+                    <label>Maiden Name (if applicable)</label>
+                    <input type="text" name="greatGrandparent${greatGrandparentCount}MaidenName">
+                </div>
+                
+                <div class="form-group">
+                    <label>Relationship to You</label>
+                    <input type="text" name="greatGrandparent${greatGrandparentCount}Relationship" placeholder="e.g., Great grandmother, 2x great grandfather...">
+                </div>
+                
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="greatGrandparent${greatGrandparentCount}Birthday">
+                </div>
+                
+                <div class="form-group">
+                    <label>Birthplace</label>
+                    <input type="text" name="greatGrandparent${greatGrandparentCount}Birthplace">
+                </div>
+                
+                <div class="form-group">
+                    <label>Date of Passing</label>
+                    <input type="date" name="greatGrandparent${greatGrandparentCount}DeathDate">
+                </div>
+                
+                <div class="form-group">
+                    <label>Place of Passing</label>
+                    <input type="text" name="greatGrandparent${greatGrandparentCount}DeathPlace">
+                </div>
+                
+                <div class="form-group">
+                    <label>Occupation(s)</label>
+                    <textarea name="greatGrandparent${greatGrandparentCount}Occupation"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Their Children <span class="required">*</span></label>
+                    <textarea name="greatGrandparent${greatGrandparentCount}Children" placeholder="Names of all their children..."></textarea>
+                    <div class="help-text">Required for tracking lineage - please list all children</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Notable Information</label>
+                    <textarea name="greatGrandparent${greatGrandparentCount}Notes" placeholder="Any stories, traits, or information you know..."></textarea>
+                </div>
+                
+                <button type="button" class="btn-secondary" onclick="this.parentElement.remove()" style="width: 100%; margin-top: 10px;">Remove This Person</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function addPartner() {
+            partnerCount++;
+            const container = document.getElementById('partnersContainer');
+            const div = document.createElement('div');
+            div.className = 'form-group';
+            div.style.background = '#f9f8f5';
+            div.style.padding = '20px';
+            div.style.borderRadius = '8px';
+            div.style.marginBottom = '20px';
+            div.innerHTML = `
+                <h3 style="font-family: 'Rufina', serif; color: #1F4D3B; margin-bottom: 15px;">Partner ${partnerCount}</h3>
+                
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="partner${partnerCount}FullName">
+                </div>
+                
+                <div class="form-group">
+                    <label>Maiden Name (if applicable)</label>
+                    <input type="text" name="partner${partnerCount}MaidenName">
+                </div>
+                
+                <div class="form-group">
+                    <label>Relationship Type</label>
+                    <select name="partner${partnerCount}RelationshipType">
+                        <option value="">Select</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="partner">Partner</option>
+                        <option value="co-parent">Co-parent</option>
+                        <option value="divorced">Divorced spouse</option>
+                        <option value="separated">Separated spouse</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="partner${partnerCount}Birthday">
+                </div>
+                
+                <div class="form-group">
+                    <label>Marriage/Partnership Date</label>
+                    <input type="date" name="partner${partnerCount}MarriageDate">
+                </div>
+                
+                <div class="form-group">
+                    <label>Children Together</label>
+                    <textarea name="partner${partnerCount}Children" placeholder="Names of children you have together..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Occupation(s)</label>
+                    <textarea name="partner${partnerCount}Occupation"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Notable Information</label>
+                    <textarea name="partner${partnerCount}Notes"></textarea>
+                </div>
+                
+                <button type="button" class="btn-secondary" onclick="this.parentElement.remove()" style="width: 100%; margin-top: 10px;">Remove This Partner</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function addChild() {
+            childCount++;
+            const container = document.getElementById('childrenContainer');
+            const div = document.createElement('div');
+            div.className = 'form-group';
+            div.style.background = '#f9f8f5';
+            div.style.padding = '20px';
+            div.style.borderRadius = '8px';
+            div.style.marginBottom = '20px';
+            div.innerHTML = `
+                <h3 style="font-family: 'Rufina', serif; color: #1F4D3B; margin-bottom: 15px;">Child ${childCount}</h3>
+                
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="child${childCount}FullName">
+                </div>
+                
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <input type="date" name="child${childCount}Birthday">
+                </div>
+                
+                <div class="form-group">
+                    <label>Birthplace</label>
+                    <input type="text" name="child${childCount}Birthplace">
+                </div>
+                
+                <div class="form-group">
+                    <label>Relationship Type</label>
+                    <select name="child${childCount}RelationType">
+                        <option value="">Select</option>
+                        <option value="biological">Biological child</option>
+                        <option value="adopted">Adopted child</option>
+                        <option value="step">Step-child</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Other Parent <span class="required">*</span></label>
+                    <input type="text" name="child${childCount}OtherParent" placeholder="Name of their other parent...">
+                    <div class="help-text">Required for tracking lineage</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Spouse(s)/Partner(s)</label>
+                    <textarea name="child${childCount}Partners"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Children (Your Grandchildren)</label>
+                    <textarea name="child${childCount}Children"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Education</label>
+                    <textarea name="child${childCount}Education"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Career/Occupation(s)</label>
+                    <textarea name="child${childCount}Career"></textarea>
+                </div>
+                
+                <button type="button" class="btn-secondary" onclick="this.parentElement.remove()" style="width: 100%; margin-top: 10px;">Remove This Child</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function startRelativeDetails() {
+            // Get selected relatives
+            const checkboxes = document.querySelectorAll('input[name="relatives"]:checked');
+            selectedRelatives = Array.from(checkboxes).map(cb => cb.value);
+            
+            console.log('Selected relatives:', selectedRelatives);
+            
+            // Debug: check what sections actually exist
+            const allSections = document.querySelectorAll('[data-section]');
+            console.log('All sections in DOM:');
+            allSections.forEach(s => {
+                console.log('  - ', s.getAttribute('data-section'));
+            });
+            
+            if (selectedRelatives.length === 0) {
+                alert('Please select at least one relative to provide information for.');
+                return;
+            }
+            
+            // Start with first selected relative
+            currentRelativeIndex = 0;
+            showRelativeDetailSection(selectedRelatives[currentRelativeIndex]);
+        }
+
+        function showRelativeDetailSection(relativeType) {
+            console.log('Looking for section:', relativeType);
+            
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the relative detail section
+            const section = document.querySelector(`[data-section="${relativeType}"]`);
+            console.log('Found section:', section);
+            
+            if (section) {
+                section.classList.add('active');
+                window.scrollTo(0, 0);
+            } else {
+                console.error('Section not found for:', relativeType);
+                alert('Error: Could not find section for ' + relativeType);
+            }
+        }
+
+        function nextRelativeDetail() {
+            // Validate required fields before continuing
+            const currentSection = selectedRelatives[currentRelativeIndex];
+            const nameField = document.querySelector(`input[name="${currentSection.replace(/-/g, '')}FullName"]`) || 
+                            document.querySelector(`input[name="${currentSection.replace(/-(\w)/g, (m, l) => l.toUpperCase())}FullName"]`);
+            const birthdayField = document.querySelector(`input[name="${currentSection.replace(/-/g, '')}Birthday"]`) ||
+                                document.querySelector(`input[name="${currentSection.replace(/-(\w)/g, (m, l) => l.toUpperCase())}Birthday"]`);
+            
+            // Check the active section for required fields
+            const activeSection = document.querySelector('.section.active');
+            const activeName = activeSection.querySelector('input[type="text"]');
+            const activeBirthday = activeSection.querySelector('input[type="date"]');
+            
+            if (activeName && !activeName.value) {
+                alert('Please fill in the Full Name (required field marked with *)');
+                return;
+            }
+            
+            if (activeBirthday && !activeBirthday.value) {
+                alert('Please fill in the Birthday (required field marked with *)');
+                return;
+            }
+            
+            currentRelativeIndex++;
+            
+            if (currentRelativeIndex < selectedRelatives.length) {
+                // Show next relative section
+                showRelativeDetailSection(selectedRelatives[currentRelativeIndex]);
+            } else {
+                // Done with all relatives - go to Mind/Body/Spirit
+                goToSection(5);
+            }
+        }
+
+        function previousRelativeDetail() {
+            currentRelativeIndex--;
+            
+            if (currentRelativeIndex >= 0) {
+                // Show previous relative section
+                showRelativeDetailSection(selectedRelatives[currentRelativeIndex]);
+            } else {
+                // Go back to relative selection
+                goToSection(4);
+            }
+        }
+
+        function goBackFromMindBodySpirit() {
+            if (selectedRelatives.length > 0) {
+                // Go back to last relative
+                currentRelativeIndex = selectedRelatives.length - 1;
+                showRelativeDetailSection(selectedRelatives[currentRelativeIndex]);
+            } else {
+                // Go back to relative selection
+                goToSection(4);
+            }
+        }
+
+        function goBackFromFinalThoughts() {
+            // Check which entry type to determine where to go back
+            if (entryType === 'addition') {
+                // Go back to Addition Entry page
+                goToSection(3);
+            } else {
+                // Go back to Mind/Body/Spirit
+                goToSection(5);
+            }
+        }
+
+        // Google Sheets Integration
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzVfQMOSNshC0XSjwYTJwdVvPONfoU8estBuIZCMSDB4XXjresUky6WiwidD66ybB8/exec';
+        
+        function submitSurvey() {
+            // Honeypot check - if filled, it's a bot
+            const honeypot = document.querySelector('input[name="_honeypot"]');
+            if (honeypot && honeypot.value) {
+                showSuccessMessage();
+                return;
+            }
+            
+            // Time check - if submitted in under 10 seconds, likely a bot
+            const formStartTime = window.formLoadTime || Date.now();
+            const timeSpent = Date.now() - formStartTime;
+            if (timeSpent < 10000) {
+                showSuccessMessage();
+                return;
+            }
+            
+            // Validate required contact email
+            const contactEmail = document.querySelector('input[name="contactEmail"]');
+            if (!contactEmail || !contactEmail.value) {
+                alert('Please provide your email address in the Contact Information section before submitting.');
+                return;
+            }
+            
+            // Basic email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(contactEmail.value)) {
+                alert('Please provide a valid email address.');
+                return;
+            }
+            
+            // Collect all form data
+            const formData = new FormData(document.getElementById('surveyForm'));
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                if (key !== '_honeypot') {
+                    data[key] = value;
+                }
+            }
+            
+            // Add metadata
+            data._submittedAt = new Date().toISOString();
+            data._timeSpentSeconds = Math.round(timeSpent / 1000);
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.section.active .btn-primary');
+            const originalText = submitBtn ? submitBtn.textContent : 'Submit';
+            if (submitBtn) {
+                submitBtn.textContent = 'Submitting...';
+                submitBtn.disabled = true;
+            }
+            
+            // Send to Google Sheets
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                showSuccessMessage();
+            })
+            .catch(error => {
+                console.error('Submission error:', error);
+                alert('There was an error submitting your response. Please try again.');
+                if (submitBtn) {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+        
+        function showSuccessMessage() {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const successSection = document.getElementById('successSection');
+            if (successSection) {
+                successSection.classList.add('active');
+            }
+            document.getElementById('progressBar').style.width = '100%';
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        updateProgress();
+        window.formLoadTime = Date.now();
+    </script>
+</body>
+</html>
